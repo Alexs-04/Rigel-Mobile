@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!--
+        Permite todo el tráfico HTTP no cifrado (Cleartext) para TODAS las URLs.
+        Esto es menos seguro, pero rápido para pruebas locales.
+    -->
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="system" />
+            <certificates src="user" />
+        </trust-anchors>
+    </base-config>
+
+    <!--
+        Alternativa más segura (Recomendado): Solo permite el tráfico Cleartext para tu IP local específica.
+        Si solo necesitas tu servidor local (172.30.17.34), usa esta configuración en su lugar.
+        Puedes comentar <base-config> y descomentar <domain-config> si solo quieres tu servidor.
+    -->
+    <!--
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">172.30.17.34</domain>
+        <trust-anchors>
+            <certificates src="system" />
+            <certificates src="user" />
+        </trust-anchors>
+    </domain-config>
+    -->
+</network-security-config>
